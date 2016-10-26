@@ -7,6 +7,7 @@ This problem originates from https://github.com/webpack/webpack/issues/1792. Tha
 ---
 According to the v7 specification's [[sec: resolve-export]](http://www.ecma-international.org/ecma-262/7.0/#sec-resolveexport),
 
+<h4 id="expected-output"></h4>
 the expected output ought to be:
 ```
 undefined

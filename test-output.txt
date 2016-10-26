@@ -1,0 +1,79 @@
+
+> module-export-override-semantic@1.0.0 test /home/cloud/github/module-export-override-semantic
+> npm run babel && npm run ts
+
+
+> module-export-override-semantic@1.0.0 babel /home/cloud/github/module-export-override-semantic
+> babel -d bb-out/ src/ && echo "\n\nouput:\n" && node test bb-out
+
+src/1/a.js -> bb-out/1/a.js
+src/1/b.js -> bb-out/1/b.js
+src/1/entry.js -> bb-out/1/entry.js
+src/2/a.js -> bb-out/2/a.js
+src/2/b.js -> bb-out/2/b.js
+src/2/entry.js -> bb-out/2/entry.js
+src/4/a.js -> bb-out/4/a.js
+src/4/b.js -> bb-out/4/b.js
+src/4/c.js -> bb-out/4/c.js
+src/4/entry.js -> bb-out/4/entry.js
+
+
+ouput:
+
+
+>>>: 
+undefined
+
+>>>: 
+TypeError: Cannot set property foo of #<Object> which has only a getter
+    at Object.<anonymous> (/home/cloud/github/module-export-override-semantic/bb-out/2/a.js:18:23)
+    at Module._compile (module.js:570:32)
+    at Object.Module._extensions..js (module.js:579:10)
+    at Module.load (module.js:487:32)
+    at tryModuleLoad (module.js:446:12)
+    at Function.Module._load (module.js:438:3)
+    at Module.require (module.js:497:17)
+    at require (internal/module.js:20:19)
+    at Object.<anonymous> (/home/cloud/github/module-export-override-semantic/bb-out/2/entry.js:3:10)
+    at Module._compile (module.js:570:32)
+
+>>>: 
+TypeError: Cannot redefine property: foo
+    at Function.defineProperty (native)
+    at /home/cloud/github/module-export-override-semantic/bb-out/4/a.js:20:10
+    at Array.forEach (native)
+    at Object.<anonymous> (/home/cloud/github/module-export-override-semantic/bb-out/4/a.js:18:17)
+    at Module._compile (module.js:570:32)
+    at Object.Module._extensions..js (module.js:579:10)
+    at Module.load (module.js:487:32)
+    at tryModuleLoad (module.js:446:12)
+    at Function.Module._load (module.js:438:3)
+    at Module.require (module.js:497:17)
+
+> module-export-override-semantic@1.0.0 ts /home/cloud/github/module-export-override-semantic
+> tsc -p . || true && echo "\n\nouput:\n" && node test ts-out
+
+src/1/entry.ts(1,8): error TS1192: Module '"/home/cloud/github/module-export-override-semantic/src/1/a"' has no default export.
+TSFILE: /home/cloud/github/module-export-override-semantic/ts-out/1/b.js
+TSFILE: /home/cloud/github/module-export-override-semantic/ts-out/1/a.js
+TSFILE: /home/cloud/github/module-export-override-semantic/ts-out/1/entry.js
+TSFILE: /home/cloud/github/module-export-override-semantic/ts-out/2/b.js
+TSFILE: /home/cloud/github/module-export-override-semantic/ts-out/2/a.js
+TSFILE: /home/cloud/github/module-export-override-semantic/ts-out/2/entry.js
+TSFILE: /home/cloud/github/module-export-override-semantic/ts-out/4/c.js
+TSFILE: /home/cloud/github/module-export-override-semantic/ts-out/4/b.js
+TSFILE: /home/cloud/github/module-export-override-semantic/ts-out/4/a.js
+TSFILE: /home/cloud/github/module-export-override-semantic/ts-out/4/entry.js
+
+
+ouput:
+
+
+>>>: 
+b-default
+
+>>>: 
+a-foo
+
+>>>: 
+c-foo

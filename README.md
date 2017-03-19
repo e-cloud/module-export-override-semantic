@@ -9,6 +9,7 @@ According to the v7 specification's [[sec: resolve-export]](http://www.ecma-inte
 
 <h4 id="expected-output"></h4>
 the expected output ought to be:
+
 ```
 undefined
 
